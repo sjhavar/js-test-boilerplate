@@ -1,29 +1,21 @@
 import test from 'tape';
-import { double, doubleXTimes, doubleEach } from './index';
+import { Animal, Reptile, Primate, Human } from './index';
 
-test( 'double fn', function ( test ) {
-  const actual = double( 5 );
-  const expected = 10;
 
-  test.equal( actual, expected, 'should double the value' );
+test ('Animal', function ( test ){
 
-  test.end();
-});
+let actual, expected;
 
-test( 'doubleXTimes', function ( test ) {
-  const actual = doubleXTimes( 5, 3 );
-  const expected = 40;
+  const human = new Human();
 
-  test.equal( actual, expected, 'should double 5 three times' );
+  test.ok( human instanceof Human, 'should be an instance of Human' );
+  test.ok( human instanceof Primate, 'should be an instance of Primate' );
+  test.ok( human instanceof Animal, 'should be an instance of Animal' );
 
-  test.end();
-});
-
-test( 'doubleEach', function ( test ) {
-  const actual = doubleEach([ 0, 1, 2 ]);
-  const expected = [ 0, 2, 4 ];
-
-  test.deepEqual( actual, expected, 'should double each in the array' );
+  const message = 'hello';
+  expected = message;
+  actual = human.speak( message );
+  test.equal( actual, expected, 'should speak what it is asked to speak' );
 
   test.end();
 });

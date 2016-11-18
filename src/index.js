@@ -1,26 +1,28 @@
-export function double ( x ) {
-  return x * 2;
-}
+export class Animal {
 
-export function doubleXTimes ( x, num ) {
-  let result = x;
-
-  for ( let i = 1; i <= num; i++ ) {
-    // result = result * 2;
-    result = double( result );
+  constructor ( sound = 'generic sound' ) {
+    this.sound = sound;
   }
 
-  return result;
+  speak() {
+    return this.sound;
+  } 
+ }
+
+export class Reptile extends Animal {
+
+  constructor ( SOUND = 'reptiles sound' ) {
+    super(SOUND);
+  }
+
 }
 
-export function doubleEach ( arr ) {
-  let result = arr.map( double );
-
-  // const result = arr.map( x => double( x ) );
-  // const result = arr.map( function ( x ) {
-  //   return double( x );
-  // });
-
-  return result;
+export class Primate extends Animal {
 }
 
+export class Human extends Primate {
+  constructor () {
+    super ( 'hello'  );
+  }
+
+}
